@@ -16,7 +16,7 @@ export function displayArticles(article){
                 
         let productLink = document.createElement("a");
         productCard.appendChild(productLink);
-        productLink.href = "product.html?id="+article[i]._id;
+        productLink.href = "front/product.html?id="+article[i]._id;
         productLink.title = article[i].description;
             
         let productArticle = document.createElement("article");
