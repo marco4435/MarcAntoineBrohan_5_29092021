@@ -1,3 +1,5 @@
+import {getArticles, displayArticle} from "./functions.js";
+
 main();
 
 async function main() {

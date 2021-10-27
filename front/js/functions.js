@@ -1,4 +1,4 @@
-function getArticles(){
+export function getArticles(){
     return fetch(url)
         .then(function(response){
             return response.json();
@@ -8,7 +8,7 @@ function getArticles(){
         });
 }
 
-function displayArticle(){
+export function displayArticle(){
     let productCard = document.querySelector(".items");
                 
     let productLink = document.createElement("a");
