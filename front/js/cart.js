@@ -1,3 +1,5 @@
+import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, deleteKanap, changeQuantity, sendOrder} from "./functions.js";
+
 main();
 
 async function main(){

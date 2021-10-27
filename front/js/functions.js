@@ -39,7 +39,7 @@ export function displayArticles(article){
     }
 }
 
-function getKanapData(){
+export function getKanapData(){
     return fetch(urlKanap)
         .then(function(response){
             return response.json()
@@ -49,7 +49,7 @@ function getKanapData(){
         });
 }
 
-function displayKanap(kanapData){
+export function displayKanap(kanapData){
     let ItemImg = document.querySelector(".item__img");
     let Img = document.createElement("img");
     ItemImg.appendChild(Img);
@@ -74,7 +74,7 @@ function displayKanap(kanapData){
     }
 }
 
-function addToCart(kanapData){
+export function addToCart(kanapData){
     let addToCart = document.querySelector("#addToCart");  
     let kanapsInStorage = [];
     addToCart.addEventListener("click", (event) => {
@@ -116,7 +116,7 @@ function addToCart(kanapData){
     })
 }
 
-function displayCarts(){
+export function displayCarts(){
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
         let CartItems = document.querySelector("#cart__items");
             
@@ -180,7 +180,7 @@ function displayCarts(){
     }
 }
 
-function getTotalQuantity(){
+export function getTotalQuantity(){
     let TotalQuantity = 0;
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
         TotalQuantity = TotalQuantity + parseInt(kanapsInLocalStorage[i].quantity);
@@ -188,12 +188,12 @@ function getTotalQuantity(){
     return TotalQuantity;
 }
 
-function displayTotalQuantity(TotalQuantity){
+export function displayTotalQuantity(TotalQuantity){
     let TotalQuantity2 = document.querySelector("#totalQuantity");
     TotalQuantity2.innerHTML = TotalQuantity;
 }
 
-function getTotalPrice(){
+export function getTotalPrice(){
     let TotalPrice = 0;
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
         TotalPrice = TotalPrice + parseInt(kanapsInLocalStorage[i].price) * parseInt(kanapsInLocalStorage[i].quantity);
@@ -201,12 +201,12 @@ function getTotalPrice(){
     return TotalPrice;
 }
 
-function displayTotalPrice(TotalPrice){
+export function displayTotalPrice(TotalPrice){
     let TotalPrice2 = document.querySelector("#totalPrice");
     TotalPrice2.innerHTML = TotalPrice;
 }
 
-function deleteKanap(){
+export function deleteKanap(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
@@ -218,7 +218,7 @@ function deleteKanap(){
     }
 }
 
-function changeQuantity(){
+export function changeQuantity(){
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {
@@ -239,7 +239,7 @@ function changeQuantity(){
     }
 }
 
-function sendOrder(){
+export function sendOrder(){
     const order = document.getElementById('order');
     order.addEventListener('click', (event) => {
         let contact = {
@@ -256,7 +256,7 @@ function sendOrder(){
     })
 }
 
-function validation(contact){
+export function validation(contact){
     firstNameIsValid(contact);
     lastNameIsValid(contact);
     addressIsValid(contact);
@@ -272,7 +272,7 @@ function validation(contact){
     }
 }
 
-function firstNameIsValid(contact){
+export function firstNameIsValid(contact){
     let firstNameRegex = contact.firstName;
     let firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
     if (/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(firstNameRegex)){
@@ -283,7 +283,7 @@ function firstNameIsValid(contact){
     }
 }
 
-function lastNameIsValid(contact){
+export function lastNameIsValid(contact){
     let lastNameRegex = contact.lastName;
     let lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
     if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(lastNameRegex)){
@@ -294,7 +294,7 @@ function lastNameIsValid(contact){
     }
 }
 
-function addressIsValid(contact){
+export function addressIsValid(contact){
     let addressRegex = contact.address;
     let addressErrorMsg = document.getElementById("addressErrorMsg");
     if(/^[-'a-zA-Z0-9À-ÖØ-öø-ÿ\s]{3,}$/.test(addressRegex)){
@@ -305,7 +305,7 @@ function addressIsValid(contact){
     }
 }
 
-function cityIsValid(contact){
+export function cityIsValid(contact){
     let cityRegex = contact.city;
     let cityErrorMsg = document.getElementById("cityErrorMsg");
     if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(cityRegex)){
@@ -316,7 +316,7 @@ function cityIsValid(contact){
     }
 }
 
-function emailIsValid(contact){
+export function emailIsValid(contact){
     const emailRegex = contact.email;
     const emailErrorMsg = document.getElementById("emailErrorMsg");
     if(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(emailRegex)){
