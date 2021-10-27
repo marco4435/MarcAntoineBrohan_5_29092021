@@ -10,31 +10,33 @@ export function getArticles(){
         });
 }
 
-export function displayArticle(){
-    let productCard = document.querySelector(".items");
+export function displayArticles(article){
+    for(let i = 0; i < article.length; i++){
+        let productCard = document.querySelector(".items");
                 
-    let productLink = document.createElement("a");
-    productCard.appendChild(productLink);
-    productLink.href = "product.html?id="+article._id;
-    productLink.title = article.description;
-        
-    let productArticle = document.createElement("article");
-    productLink.appendChild(productArticle);
-        
-    let productImg = document.createElement("img");
-    productArticle.appendChild(productImg);
-    productImg.src = article.imageUrl;
-    productImg.alt = article.altTxt;
-        
-    let productH3 = document.createElement("h3");
-    productArticle.appendChild(productH3);
-    productH3.classList.add("productName");
-    productH3.innerHTML = article.name;
-        
-    let productP = document.createElement("p");
-    productArticle.appendChild(productP);
-    productP.classList.add("productDescription");
-    productP.innerHTML = article.description;
+        let productLink = document.createElement("a");
+        productCard.appendChild(productLink);
+        productLink.href = "product.html?id="+article[i]._id;
+        productLink.title = article[i].description;
+            
+        let productArticle = document.createElement("article");
+        productLink.appendChild(productArticle);
+            
+        let productImg = document.createElement("img");
+        productArticle.appendChild(productImg);
+        productImg.src = article[i].imageUrl;
+        productImg.alt = article[i].altTxt;
+            
+        let productH3 = document.createElement("h3");
+        productArticle.appendChild(productH3);
+        productH3.classList.add("productName");
+        productH3.innerHTML = article[i].name;
+            
+        let productP = document.createElement("p");
+        productArticle.appendChild(productP);
+        productP.classList.add("productDescription");
+        productP.innerHTML = article[i].description;
+    }
 }
 
 function getKanapData(){
