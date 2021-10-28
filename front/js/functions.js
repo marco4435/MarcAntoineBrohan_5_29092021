@@ -1,3 +1,4 @@
+// Constants importation. - Importation des constantes.
 import {url, idKanap, urlKanap, kanapsInLocalStorage} from "./const.js";
 
 export function getArticles(){
