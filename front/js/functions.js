@@ -83,6 +83,13 @@ export function displayKanap(kanapData){
     }
 }
 
+// 1 - Creation of kanapsInStorage array witch will include products to add to cart. - Création du tableau kanapsInStorage qui inclura les produits à ajouter au panier.
+// 2 - For each click on "Add to cart" button : - À chaque clic sur le bouton "Ajouter au panier" :
+// 2.1 - Verification that selected quantity is between 1 and 100. - Vérification que la quantité sélectionnée soit comprise entre 1 et 100.
+// 2.2 - Localstorage integration into kanapsInStorage array. - Intégration du localstorage au tableau kanapsInStorage.
+// 2.3 - Recording in the kanapAdded variable of products to add to the basket of the being viewed page. - Enregistrement dans la variable kanapAdded des produits à ajouter au panier de la page en cours de consultation.
+// 2.4 - kanapAdded integration into kanapsInStorage. - Intégration de kanapAdded à kanapsInStorage. Si un produit est déjà présent, seule la quantité est incrémentée.
+// 2.5 - kanapsInStorage integration into localstorage. - Intégration de kanapsInStorage au localstorage.
 export function addToCart(kanapData){
     let addToCart = document.querySelector("#addToCart");  
     let kanapsInStorage = [];
@@ -108,6 +115,7 @@ export function addToCart(kanapData){
                         let addedQuantity = parseInt(kanapsInStorage[i].quantity) + parseInt(kanapAdded.quantity);
                         a = a + 1;
                         kanapsInStorage[i].quantity = addedQuantity;
+                        alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
                     }
                 };
                 if (a === 0){
