@@ -112,10 +112,12 @@ export function addToCart(kanapData){
                 };
                 if (a === 0){
                     kanapsInStorage.push(kanapAdded);
+                    alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
                 }
             }
             else{
                 kanapsInStorage.push(kanapAdded);
+                alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
             }
         }
         else{
