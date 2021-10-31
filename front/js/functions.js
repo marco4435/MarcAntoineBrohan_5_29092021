@@ -287,7 +287,6 @@ export function test(contact){
     let cityErrorMsg = document.getElementById("cityErrorMsg");
     const emailRegex = contact.email;
     const emailErrorMsg = document.getElementById("emailErrorMsg");
-    
     if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(firstNameRegex)){
         if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(lastNameRegex)){
             if(/^[-'a-zA-Z0-9À-ÖØ-öø-ÿ\s]{3,}$/.test(addressRegex)){
@@ -295,9 +294,13 @@ export function test(contact){
                     if(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(emailRegex)){
                         return true;
                     }
+                    return true;
                 }
+                return true;
             }
+            return true;
         }
+        return true;
     } 
     else {
         return false;
