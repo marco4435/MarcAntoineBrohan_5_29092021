@@ -1,6 +1,10 @@
 // Constants importation. - Importation des constantes.
 import {url, idKanap, urlKanap, kanapsInLocalStorage} from "./const.js";
 
+
+// PAGE INDEX.
+
+
 // 1 - API loading and json format conversion. - Chargement de l'API et conversion au format json.
 // 2 - Display of an alert if the API loading didn't worked. - Affichage d'une alerte si le chargement de l'API n'a pas fonctionné.
 export function getArticles(){
@@ -43,6 +47,10 @@ export function displayArticles(article){
         productP.innerHTML = article[i].description;
     }
 }
+
+
+// PAGE PRODUCT.
+
 
 // 1 - API loading and json format conversion. - Chargement de l'API et conversion au format json.
 // 2 - Display of an alert if the API loading didn't worked. - Affichage d'une alerte si le chargement de l'API n'a pas fonctionné.
@@ -135,6 +143,11 @@ export function addToCart(kanapData){
     })
 }
 
+
+// PAGE CART.
+
+// 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
+// 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
 export function displayCarts(){
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
         let CartItems = document.querySelector("#cart__items");
@@ -199,6 +212,7 @@ export function displayCarts(){
     }
 }
 
+// Creation of a loop summing the quantities of each row of the localstorage. - Création d'une boucle effectuant la somme des quantités de chaque ligne du localstorage.
 export function getTotalQuantity(){
     let TotalQuantity = 0;
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
@@ -207,11 +221,13 @@ export function getTotalQuantity(){
     return TotalQuantity;
 }
 
+// Display of the articles's quantity in the cart. - Affichage de la quantité d'articles présents dans le panier.
 export function displayTotalQuantity(TotalQuantity){
     let TotalQuantity2 = document.querySelector("#totalQuantity");
     TotalQuantity2.innerHTML = TotalQuantity;
 }
 
+// Creation of a loop summing the prices of each row of the localstorage. - Création d'une boucle effectuant la somme des prix de chaque ligne du localstorage.
 export function getTotalPrice(){
     let TotalPrice = 0;
     for(let i = 0; i < kanapsInLocalStorage.length; i++){
@@ -220,6 +236,7 @@ export function getTotalPrice(){
     return TotalPrice;
 }
 
+// Display of the all items price in the cart. - Affichage du prix de l'ensemble des articles du panier.
 export function displayTotalPrice(TotalPrice){
     let TotalPrice2 = document.querySelector("#totalPrice");
     TotalPrice2.innerHTML = TotalPrice;
