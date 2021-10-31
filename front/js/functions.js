@@ -1,6 +1,8 @@
 // Constants importation. - Importation des constantes.
 import {url, idKanap, urlKanap, kanapsInLocalStorage} from "./const.js";
 
+// 1 - API loading and json format conversion. - Chargement de l'API et conversion au format json.
+// 2 - Display of an alert if the API loading didn't worked. - Affichage d'une alerte si le chargement de l'API n'a pas fonctionné.
 export function getArticles(){
     return fetch(url)
         .then(function(response){
@@ -11,6 +13,8 @@ export function getArticles(){
         });
 }
 
+// 1 - Creation of a loop allowing to display as many articles as there are in the API via html tags insertion. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans l'API via l'insertion d'éléments html.
+// 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
 export function displayArticles(article){
     for(let i = 0; i < article.length; i++){
         let productCard = document.querySelector(".items");
@@ -40,6 +44,8 @@ export function displayArticles(article){
     }
 }
 
+// 1 - API loading and json format conversion. - Chargement de l'API et conversion au format json.
+// 2 - Display of an alert if the API loading didn't worked. - Affichage d'une alerte si le chargement de l'API n'a pas fonctionné.
 export function getKanapData(){
     return fetch(urlKanap)
         .then(function(response){
@@ -50,6 +56,8 @@ export function getKanapData(){
         });
 }
 
+// 1 - Creation of a loop allowing to display as many articles as there are in the API's ID via html tags insertion. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans l'ID de l'API via l'insertion d'éléments html.
+// 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
 export function displayKanap(kanapData){
     let ItemImg = document.querySelector(".item__img");
     let Img = document.createElement("img");
