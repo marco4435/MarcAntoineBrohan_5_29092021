@@ -306,6 +306,7 @@ export function sendOrder(){
             .then((data) => {
                 console.log(data.orderId);
             })
+            console.log(contactKanapsArray);
 
 
 }
