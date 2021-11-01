@@ -122,7 +122,7 @@ export function addToCart(kanapData){
                     if(kanapAdded.id === kanapsInStorage[i].id && kanapAdded.color === kanapsInStorage[i].color){
                         let addedQuantity = parseInt(kanapsInStorage[i].quantity) + parseInt(kanapAdded.quantity);
                         a = a + 1;
-                        kanapsInStorage[i].quantity = addedQuantity;
+                        kanapsInStorage[i].quantity = addedQuantity.toString();
                         alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
                     }
                 };
