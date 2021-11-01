@@ -282,7 +282,7 @@ export function modifyCart(){
 
 export function sendOrder(){
     const order = document.getElementById('order');
-    order.addEventListener('click', (event) => {
+
         let contact = {
             firstName: document.querySelector("#firstName").value,
             lastName: document.querySelector("#lastName").value,
@@ -290,27 +290,24 @@ export function sendOrder(){
             city: document.querySelector("#city").value,
             email: document.querySelector("#email").value,
         }
-        if(validation(contact)){
+
             let kanaps = [];
             kanaps.push(kanapsInLocalStorage);
             let contactKanapsArray = {
                 contact,
                 kanaps,
             }
-            let options = {
-                method: 'POST',
+            fetch(urlOrder, {
                 body: JSON.stringify(contactKanapsArray),
-                headers: { 'Content-Type': 'application/json; charset=utf-8' },
-            }
-            fetch(urlOrder, options)
-                .then(function(response){
-                    return response.json();
-                })
-                .then((cartID) => {
-                    console.log(cartID);
-                })
-        }
-    })
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.orderId);
+            })
+
+
 }
 
 export function validation(contact){
