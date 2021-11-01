@@ -297,7 +297,7 @@ export function sendOrder(){
                 contact,
                 kanaps,
             }
-            fetch(urlOrder, {
+            fetch("http://localhost:3000/api/products/order", {
                 body: JSON.stringify(contactKanapsArray),
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
