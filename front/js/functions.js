@@ -252,7 +252,7 @@ export function displayCarts(){
 
         let productP_Div2_2_1 = document.createElement("p");
         productDiv2_2_1.appendChild(productP_Div2_2_1);
-        productP_Div2_2_1.innerHTML = "Quantité : " + kanapsInLocalStorage[i].quantity;
+        productP_Div2_2_1.innerHTML = "Quantité : ";
 
         let productInput = document.createElement("input");
         productDiv2_2_1.appendChild(productInput);
@@ -261,6 +261,7 @@ export function displayCarts(){
         productInput.name = "itemQuantity";
         productInput.min = "1";
         productInput.max = "100";
+        productInput.value = kanapsInLocalStorage[i].quantity;
 
         let productDiv2_2_2 = document.createElement("div");
         productDiv2_2.appendChild(productDiv2_2_2);
