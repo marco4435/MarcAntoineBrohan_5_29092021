@@ -181,6 +181,7 @@ export function displayTotalPrice(TotalPrice){
 // 4 - . - Intégration de newkanapsInLocalStorage au localstorage.
 // 5 - . - Affichage du localstorage.
 export function modifyOrder(){
+    displayCarts(kanapsInLocalStorage);
     let deleteKanap = document.querySelectorAll(".deleteItem");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
@@ -207,7 +208,6 @@ export function modifyOrder(){
         })
     }
     localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-    displayCarts(kanapsInLocalStorage);
 }
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
