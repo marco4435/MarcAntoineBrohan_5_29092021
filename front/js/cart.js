@@ -13,6 +13,7 @@ main();
 // 6 - Command validation function. - Fonction de validation de la commande.
 async function main(){
     if(kanapsInLocalStorage){
+        displayCarts();
         const TotalQuantity = await getTotalQuantity();
         displayTotalQuantity(TotalQuantity);
         const TotalPrice = await getTotalPrice();
