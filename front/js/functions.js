@@ -1,5 +1,5 @@
 // Constants importation. - Importation des constantes.
-import {url, idKanap, urlKanap, kanapsInLocalStorage} from "./const.js";
+import {url, idKanap, urlKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
 
 
 // PAGE INDEX.
@@ -246,7 +246,7 @@ export function displayTotalPrice(TotalPrice){
 // 2 - For each click on "Supprimer" button, the newkanapsInLocalStorage line getting the concerned article id deleted and display is update. - Pour chaque clic sur le bouton "Supprimer", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est supprimée et l'affichage est mis à jour.
 // 3 - For each input "Quantité" quantity modified, the newkanapsInLocalStorage line getting the concerned article id modified. - Pour chaque quantité modifiée dans l'input "Quantité", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est modifiée.
 // 4 - newkanapsInLocalStorage integration into localstorage. - Intégration de newkanapsInLocalStorage au localstorage.
-export function modifyOrder(){
+export function modifyCart(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
@@ -294,72 +294,31 @@ export function sendOrder(){
 }
 
 export function validation(contact){
-    firstNameIsValid(contact);
-    lastNameIsValid(contact);
-    addressIsValid(contact);
-    cityIsValid(contact);
-    emailIsValid(contact);
+    let firstName = contact.firstName;
+    let lastName = contact.lastName;
+    let address = contact.address;
+    let city = contact.city;
+    let email = contact.email;
+    let name_cityRegex = /^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/;
+    let adressRegex = /^[-'a-zA-Z0-9À-ÖØ-öø-ÿ\s]{3,}$/;
+    let emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-    if (firstNameIsValid(contact) && lastNameIsValid(contact) && addressIsValid(contact) && cityIsValid(contact) && emailIsValid(contact)){
+    if(
+       firstname.length > 1
+    && name_cityRegex.test(firstName)
+    && lastName.length > 1
+    && name_cityRegex.test(lastName)
+    && address.length > 1
+    && adressRegex.test(address)
+    && city.length > 1
+    && name_cityRegex.test(city)
+    && email.length > 1
+    && emailRegex.test(email)
+    ){
         return true;
     } 
     else {
         alert('Le formulaire contient des erreurs.');
-        return false;
-    }
-}
-
-export function firstNameIsValid(contact){
-    let firstNameRegex = contact.firstName;
-    let firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
-    if (/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(firstNameRegex)){
-        return true;
-    } 
-    else {
-        return false;
-    }
-}
-
-export function lastNameIsValid(contact){
-    let lastNameRegex = contact.lastName;
-    let lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
-    if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(lastNameRegex)){
-        return true;
-    } 
-    else{
-        return false;
-    }
-}
-
-export function addressIsValid(contact){
-    let addressRegex = contact.address;
-    let addressErrorMsg = document.getElementById("addressErrorMsg");
-    if(/^[-'a-zA-Z0-9À-ÖØ-öø-ÿ\s]{3,}$/.test(addressRegex)){
-        return true;
-    } 
-    else{
-        return false;
-    }
-}
-
-export function cityIsValid(contact){
-    let cityRegex = contact.city;
-    let cityErrorMsg = document.getElementById("cityErrorMsg");
-    if(/^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/.test(cityRegex)){
-        return true;
-    } 
-    else{
-        return false;
-    }
-}
-
-export function emailIsValid(contact){
-    const emailRegex = contact.email;
-    const emailErrorMsg = document.getElementById("emailErrorMsg");
-    if(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(emailRegex)){
-        return true;
-    } 
-    else{
         return false;
     }
 }

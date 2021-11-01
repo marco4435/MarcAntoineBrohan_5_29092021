@@ -1,5 +1,5 @@
 // Functions importation. - Importation des fonctions.
-import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, modifyOrder, sendOrder} from "./functions.js";
+import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, modifyCart, sendOrder} from "./functions.js";
 
 // Constants importation. - Importation des constantes.
 import {kanapsInLocalStorage} from "./const.js";
@@ -18,7 +18,7 @@ async function main(){
         displayTotalQuantity(TotalQuantity);
         const TotalPrice = await getTotalPrice();
         displayTotalPrice(TotalPrice);
-        modifyOrder();
+        modifyCart();
         sendOrder();
     }
 }
