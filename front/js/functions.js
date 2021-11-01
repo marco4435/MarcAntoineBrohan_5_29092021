@@ -245,7 +245,7 @@ export function displayTotalPrice(TotalPrice){
 // 1 - Localstorage integration into newkanapsInLocalStorage array. - Intégration du localstorage au tableau newkanapsInLocalStorage.
 // 2 - For each click on "Supprimer" button, the newkanapsInLocalStorage line getting the concerned article id deleted and display is update. - Pour chaque clic sur le bouton "Supprimer", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est supprimée et l'affichage est mis à jour.
 // 3 - For each input "Quantité" quantity modified, the newkanapsInLocalStorage line getting the concerned article id modified. - Pour chaque quantité modifiée dans l'input "Quantité", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est modifiée.
-// 4 - . - Intégration de newkanapsInLocalStorage au localstorage.
+// 4 - newkanapsInLocalStorage integration into localstorage. - Intégration de newkanapsInLocalStorage au localstorage.
 export function modifyOrder(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
@@ -253,8 +253,9 @@ export function modifyOrder(){
         deleteKanap[i].addEventListener('click', (event) => {
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            let article = document.getElementsByTagName("article");
-            article.remove();
+            let parent = document.getElementById("cart__items");
+            let child = document.getElementsByTagName("article");
+            parent.remove(child);
             displayCarts();
         })
     }
