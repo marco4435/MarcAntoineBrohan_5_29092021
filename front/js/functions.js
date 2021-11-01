@@ -254,7 +254,8 @@ export function modifyOrder(){
         deleteKanap[i].addEventListener('click', (event) => {
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            document.getElementsByTagName("article").remove();
+            let article = getElementsByTagName("article");
+            article.remove();
             displayCarts();
         })
     }
@@ -272,7 +273,8 @@ export function modifyOrder(){
             };
             newkanapsInLocalStorage[i] = newkanapAdded;
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            document.getElementsByTagName("article").remove();
+            let article = getElementsByTagName("article");
+            article.remove();
             displayCarts();
         })
     }
