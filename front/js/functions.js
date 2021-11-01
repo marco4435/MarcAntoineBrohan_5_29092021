@@ -253,10 +253,9 @@ export function modifyOrder(){
         deleteKanap[i].addEventListener('click', (event) => {
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            let parent = document.getElementById("cart__items");
             let articles = document.querySelectorAll(".cart__item");
             let child = articles[i];
-            parent.remove(child);
+            child.parentNode.removeChild(child);
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
