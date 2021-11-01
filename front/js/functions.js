@@ -256,6 +256,10 @@ export function modifyCart(){
             let articles = document.querySelectorAll(".cart__item");
             let child = articles[i];
             child.parentNode.removeChild(child);
+            let TotalQuantity = getTotalQuantity();
+            displayTotalQuantity(TotalQuantity);
+            let TotalPrice = getTotalPrice();
+            displayTotalPrice(TotalPrice);
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
@@ -293,7 +297,18 @@ export function sendOrder(){
                 contact,
                 kanaps,
             }
-            alert("Good !");
+            let options = {
+                method: 'POST',
+                body: JSON.stringify(contactKanapsArray),
+                headers: { 'Content-Type': 'application/json; charset=utf-8' },
+            }
+            fetch(urlOrder, options)
+                .then(function(response){
+                    return response.json();
+                })
+                .then((cartID) => {
+                    console.log(cartID);
+                })
         }
     })
 }
@@ -309,7 +324,7 @@ export function validation(contact){
     let emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
     if(
-       firstname.length > 1
+       firstName.length > 1
     && name_cityRegex.test(firstName)
     && lastName.length > 1
     && name_cityRegex.test(lastName)
