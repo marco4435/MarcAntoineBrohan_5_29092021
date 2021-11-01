@@ -292,7 +292,7 @@ export function sendOrder(){
         }
 
             let kanaps = [];
-            kanaps.push(kanapsInLocalStorage);
+            kanaps = kanapsInLocalStorage;
             let contactKanapsArray = {
                 contact,
                 kanaps,
