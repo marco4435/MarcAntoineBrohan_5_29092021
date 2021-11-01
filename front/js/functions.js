@@ -243,18 +243,15 @@ export function displayTotalPrice(TotalPrice){
 
 export function modifyOrder(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
+    let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
-            let newkanapsInLocalStorage = kanapsInLocalStorage;
             newkanapsInLocalStorage.splice(i, 1);
-            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            displayCarts();
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {
-            let newkanapsInLocalStorage = kanapsInLocalStorage;
             let NewQuantity = event.target.value;
             let newkanapAdded = {
                 id: kanapsInLocalStorage[i].id,
@@ -265,10 +262,10 @@ export function modifyOrder(){
                 price: kanapsInLocalStorage[i].price,
             };
             newkanapsInLocalStorage[i] = newkanapAdded;
-            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            displayCarts();
         })
     }
+    localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
+    displayCarts();
 }
 
 export function sendOrder(){
