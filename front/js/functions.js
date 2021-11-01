@@ -111,7 +111,7 @@ export function addToCart(kanapData){
             color: kanapColor,
             image: kanapData.imageUrl,
             name: kanapData.name,
-            price: kanapData.price,
+            price: kanapData.price.toString(),
         }
         if(kanapsInLocalStorage !== null){
             kanapsInStorage = kanapsInLocalStorage;
@@ -290,21 +290,26 @@ export function sendOrder(){
             city: document.querySelector("#city").value,
             email: document.querySelector("#email").value,
         }
+        let products = kanapsInLocalStorage;
+        let contactProducts = {
+            contact,
+            products,
+        }
         if(validation(contact)){
-            let kanaps = kanapsInLocalStorage;
-            let contactKanapsArray = {
-                contact,
-                kanaps,
-            }
             fetch(urlOrder, {
-                body: JSON.stringify(contactKanapsArray),
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                // mode: 'cors',
+                // credentials: 'same-origin',
+                headers: { Accept: 'application/json', 'Content-Type': 'application/json',},
+                body: JSON.stringify(contactProducts),
             })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data.orderId);
+            .then((response) =>{
+                console.log("response", response);
             })
+            // .then((data) => {
+            //     console.log(data);
+            //     // document.location.href = `confirmation.html?id=${data.orderId}`;
+            // })
         }
     })
 }

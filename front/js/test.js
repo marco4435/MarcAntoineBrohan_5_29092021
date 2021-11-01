@@ -22,7 +22,7 @@ export function sendOrder(){
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.orderId);
+                document.location.href = `confirmation.html?id=${data.orderId}`;
             })
         }
     })
