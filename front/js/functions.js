@@ -175,23 +175,25 @@ export function displayTotalPrice(TotalPrice){
     TotalPrice2.innerHTML = TotalPrice;
 }
 
+// 1 - . - Affichage du localstorage.
 // 1 - . - Intégration du localstorage au tableau newkanapsInLocalStorage.
 // 2 - . - Pour chaque clic sur le bouton "Supprimer", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est supprimée.
 // 3 - . - Pour chaque quantité modifiée dans l'input "Quantité", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est modifiée.
 // 4 - . - Intégration de newkanapsInLocalStorage au localstorage.
-// 5 - . - Affichage du localstorage.
 export function modifyOrder(){
     displayCarts(kanapsInLocalStorage);
     let deleteKanap = document.querySelectorAll(".deleteItem");
-    let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
+            let newkanapsInLocalStorage = kanapsInLocalStorage;
             newkanapsInLocalStorage.splice(i, 1);
+            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {
+            let newkanapsInLocalStorage = kanapsInLocalStorage;
             let NewQuantity = event.target.value;
             let newkanapAdded = {
                 id: kanapsInLocalStorage[i].id,
@@ -202,9 +204,9 @@ export function modifyOrder(){
                 price: kanapsInLocalStorage[i].price,
             };
             newkanapsInLocalStorage[i] = newkanapAdded;
+            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
         })
     }
-    localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
 }
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
