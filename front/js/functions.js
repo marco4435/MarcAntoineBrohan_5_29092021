@@ -254,9 +254,8 @@ export function modifyOrder(){
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
             let parent = document.getElementById("cart__items");
-            let child = document.getElementsByTagName("article");
+            let child = document.getElementsByTagName("article")[i];
             parent.remove(child);
-            displayCarts();
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
