@@ -186,10 +186,7 @@ export function modifyOrder(){
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
-            console.log(newkanapsInLocalStorage);
             newkanapsInLocalStorage.splice(i, 1);
-            console.log("boucle 1");
-            console.log(newkanapsInLocalStorage);
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
