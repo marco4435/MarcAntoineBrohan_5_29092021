@@ -186,6 +186,9 @@ export function modifyOrder(){
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
             newkanapsInLocalStorage.splice(i, 1);
+            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
+            document.querySelector("#cart__items").remove();
+            displayCarts();
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
@@ -201,9 +204,11 @@ export function modifyOrder(){
                 price: kanapsInLocalStorage[i].price,
             };
             newkanapsInLocalStorage[i] = newkanapAdded;
+            localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
+            document.querySelector("#cart__items").remove();
+            displayCarts();
         })
     }
-    localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
 }
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
