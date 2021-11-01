@@ -175,12 +175,18 @@ export function displayTotalPrice(TotalPrice){
     TotalPrice2.innerHTML = TotalPrice;
 }
 
+// 1 - . - Intégration du localstorage au tableau newkanapsInLocalStorage.
+// 2 - . - Pour chaque clic sur le bouton "Supprimer", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est supprimée.
+// 3 - . - Pour chaque quantité modifiée dans l'input "Quantité", la ligne dans newkanapsInLocalStorage comprenant l'article concercé est modifiée.
+// 4 - . - Intégration de newkanapsInLocalStorage au localstorage.
+// 5 - . - Affichage du localstorage.
 export function modifyOrder(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
             newkanapsInLocalStorage.splice(i, 1);
+            console.log("boucle 1");
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
