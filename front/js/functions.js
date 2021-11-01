@@ -145,6 +145,63 @@ export function addToCart(kanapData){
 
 // PAGE CART.
 
+// Creation of a loop summing the quantities of each row of the localstorage. - Création d'une boucle effectuant la somme des quantités de chaque ligne du localstorage.
+export function getTotalQuantity(){
+    let TotalQuantity = 0;
+    for(let i = 0; i < kanapsInLocalStorage.length; i++){
+        TotalQuantity = TotalQuantity + parseInt(kanapsInLocalStorage[i].quantity);
+    }
+    return TotalQuantity;
+}
+
+// Display of the articles's quantity in the cart. - Affichage de la quantité d'articles présents dans le panier.
+export function displayTotalQuantity(TotalQuantity){
+    let TotalQuantity2 = document.querySelector("#totalQuantity");
+    TotalQuantity2.innerHTML = TotalQuantity;
+}
+
+// Creation of a loop summing the prices of each row of the localstorage. - Création d'une boucle effectuant la somme des prix de chaque ligne du localstorage.
+export function getTotalPrice(){
+    let TotalPrice = 0;
+    for(let i = 0; i < kanapsInLocalStorage.length; i++){
+        TotalPrice = TotalPrice + parseInt(kanapsInLocalStorage[i].price) * parseInt(kanapsInLocalStorage[i].quantity);
+    }
+    return TotalPrice;
+}
+
+// Display of the all items price in the cart. - Affichage du prix de l'ensemble des articles du panier.
+export function displayTotalPrice(TotalPrice){
+    let TotalPrice2 = document.querySelector("#totalPrice");
+    TotalPrice2.innerHTML = TotalPrice;
+}
+
+export function modifyOrder(){
+    let deleteKanap = document.querySelectorAll(".deleteItem");
+    let newkanapsInLocalStorage = kanapsInLocalStorage;
+    for (let i = 0; i < deleteKanap.length; i++) {
+        deleteKanap[i].addEventListener('click', (event) => {
+            newkanapsInLocalStorage.splice(i, 1);
+        })
+    }
+    let changeQuantity = document.querySelectorAll(".itemQuantity");
+    for(let i = 0; i < changeQuantity.length; i++){
+        changeQuantity[i].addEventListener('change', (event) => {
+            let NewQuantity = event.target.value;
+            let newkanapAdded = {
+                id: kanapsInLocalStorage[i].id,
+                quantity: parseFloat(NewQuantity),
+                color: kanapsInLocalStorage[i].color,
+                image: kanapsInLocalStorage[i].image,
+                name: kanapsInLocalStorage[i].name,
+                price: kanapsInLocalStorage[i].price,
+            };
+            newkanapsInLocalStorage[i] = newkanapAdded;
+        })
+    }
+    localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
+    displayCarts(kanapsInLocalStorage);
+}
+
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
 // 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
 export function displayCarts(){
@@ -209,63 +266,6 @@ export function displayCarts(){
         productP_Div2_2_2.classList.add("deleteItem");
         productP_Div2_2_2.innerHTML = "Supprimer";  
     }
-}
-
-// Creation of a loop summing the quantities of each row of the localstorage. - Création d'une boucle effectuant la somme des quantités de chaque ligne du localstorage.
-export function getTotalQuantity(){
-    let TotalQuantity = 0;
-    for(let i = 0; i < kanapsInLocalStorage.length; i++){
-        TotalQuantity = TotalQuantity + parseInt(kanapsInLocalStorage[i].quantity);
-    }
-    return TotalQuantity;
-}
-
-// Display of the articles's quantity in the cart. - Affichage de la quantité d'articles présents dans le panier.
-export function displayTotalQuantity(TotalQuantity){
-    let TotalQuantity2 = document.querySelector("#totalQuantity");
-    TotalQuantity2.innerHTML = TotalQuantity;
-}
-
-// Creation of a loop summing the prices of each row of the localstorage. - Création d'une boucle effectuant la somme des prix de chaque ligne du localstorage.
-export function getTotalPrice(){
-    let TotalPrice = 0;
-    for(let i = 0; i < kanapsInLocalStorage.length; i++){
-        TotalPrice = TotalPrice + parseInt(kanapsInLocalStorage[i].price) * parseInt(kanapsInLocalStorage[i].quantity);
-    }
-    return TotalPrice;
-}
-
-// Display of the all items price in the cart. - Affichage du prix de l'ensemble des articles du panier.
-export function displayTotalPrice(TotalPrice){
-    let TotalPrice2 = document.querySelector("#totalPrice");
-    TotalPrice2.innerHTML = TotalPrice;
-}
-
-export function modifyOrder(){
-    let deleteKanap = document.querySelectorAll(".deleteItem");
-    let newkanapsInLocalStorage = kanapsInLocalStorage;
-    for (let i = 0; i < deleteKanap.length; i++) {
-        deleteKanap[i].addEventListener('click', (event) => {
-            newkanapsInLocalStorage.splice(i, 1);
-        })
-    }
-    let changeQuantity = document.querySelectorAll(".itemQuantity");
-    for(let i = 0; i < changeQuantity.length; i++){
-        changeQuantity[i].addEventListener('change', (event) => {
-            let NewQuantity = event.target.value;
-            let newkanapAdded = {
-                id: kanapsInLocalStorage[i].id,
-                quantity: parseFloat(NewQuantity),
-                color: kanapsInLocalStorage[i].color,
-                image: kanapsInLocalStorage[i].image,
-                name: kanapsInLocalStorage[i].name,
-                price: kanapsInLocalStorage[i].price,
-            };
-            newkanapsInLocalStorage[i] = newkanapAdded;
-        })
-    }
-    localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-    displayCarts();
 }
 
 export function sendOrder(){
