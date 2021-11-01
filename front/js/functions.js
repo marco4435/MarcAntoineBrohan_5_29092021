@@ -242,7 +242,7 @@ export function displayTotalPrice(TotalPrice){
     TotalPrice2.innerHTML = TotalPrice;
 }
 
-export function deleteKanap(){
+export function modifyOrder(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
@@ -252,9 +252,6 @@ export function deleteKanap(){
             location.reload();
         })
     }
-}
-
-export function changeQuantity(){
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {

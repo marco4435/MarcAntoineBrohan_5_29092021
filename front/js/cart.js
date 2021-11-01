@@ -1,5 +1,5 @@
 // Functions importation. - Importation des fonctions.
-import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, deleteKanap, changeQuantity, sendOrder} from "./functions.js";
+import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, modifyOrder, sendOrder} from "./functions.js";
 
 main();
 // Following functions's execution if the localstorage contains at least 1 item. - Éxecution des fonctions suivantes si le localstorage contient au moins 1 élément.
@@ -16,8 +16,7 @@ async function main(){
         displayTotalQuantity(TotalQuantity);
         const TotalPrice = await getTotalPrice();
         displayTotalPrice(TotalPrice);
-        deleteKanap();
-        changeQuantity();
+        modifyOrder();
         sendOrder();
     }
 }
