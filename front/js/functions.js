@@ -143,7 +143,6 @@ export function addToCart(kanapData){
     })
 }
 
-
 // PAGE CART.
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
@@ -249,7 +248,7 @@ export function modifyOrder(){
             let newkanapsInLocalStorage = kanapsInLocalStorage;
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            location.reload();
+            displayCarts();
         })
     }
     let changeQuantity = document.querySelectorAll(".itemQuantity");
@@ -267,7 +266,7 @@ export function modifyOrder(){
             };
             newkanapsInLocalStorage[i] = newkanapAdded;
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
-            location.reload();
+            displayCarts();
         })
     }
 }
