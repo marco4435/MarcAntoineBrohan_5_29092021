@@ -1,6 +1,9 @@
 // Functions importation. - Importation des fonctions.
 import {displayCarts, getTotalQuantity, displayTotalQuantity, getTotalPrice, displayTotalPrice, modifyOrder, sendOrder} from "./functions.js";
 
+// Constants importation. - Importation des constantes.
+import {kanapsInLocalStorage} from "./const.js";
+
 main();
 // Following functions's execution if the localstorage contains at least 1 item. - Éxecution des fonctions suivantes si le localstorage contient au moins 1 élément.
 // 1 - Shopping cart display. - Affichage du panier.
