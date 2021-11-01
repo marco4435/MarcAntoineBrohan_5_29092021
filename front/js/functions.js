@@ -107,7 +107,7 @@ export function addToCart(kanapData){
         let a = 0;
         let kanapAdded = {              
             id: idKanap,
-            quantity: parseFloat(document.querySelector("#quantity").value),
+            quantity: parseFloat(document.querySelector("#quantity").value).toString(),
             color: kanapColor,
             image: kanapData.imageUrl,
             name: kanapData.name,
