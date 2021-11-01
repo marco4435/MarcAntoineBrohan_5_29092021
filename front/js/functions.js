@@ -289,6 +289,11 @@ export function sendOrder(){
         if(validation(contact)){
             let kanaps = [];
             kanaps.push(kanapsInLocalStorage);
+            let contactKanapsArray = {
+                contact,
+                kanaps,
+            }
+            alert("Good !");
         }
     })
 }
@@ -318,7 +323,6 @@ export function validation(contact){
         return true;
     } 
     else {
-        alert('Le formulaire contient des erreurs.');
         return false;
     }
 }
