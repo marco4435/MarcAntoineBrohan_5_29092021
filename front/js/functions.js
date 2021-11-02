@@ -102,6 +102,7 @@ export function addToCart(kanapData){
     let addToCart = document.querySelector("#addToCart");  
     let kanapsInStorage = [];
     addToCart.addEventListener("click", (event) => {
+        event.preventDefault();
         let color = document.querySelector("#colors");
         let kanapColor = color.value;
         let a = 0;
@@ -251,6 +252,7 @@ export function modifyCart(){
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
+            event.preventDefault();
             newkanapsInLocalStorage.splice(i, 1);
             localStorage.setItem("kanapsToOrder", JSON.stringify(newkanapsInLocalStorage));
             let articles = document.querySelectorAll(".cart__item");
@@ -265,6 +267,7 @@ export function modifyCart(){
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {
+            event.preventDefault();
             let NewQuantity = event.target.value;
             let newkanapAdded = {
                 id: kanapsInLocalStorage[i].id,
@@ -283,6 +286,7 @@ export function modifyCart(){
 export function sendOrder(){
     const order = document.getElementById('order');
     order.addEventListener('click', (event) => {
+        event.preventDefault();
         let contact = {
             firstName: document.querySelector("#firstName").value,
             lastName: document.querySelector("#lastName").value,
