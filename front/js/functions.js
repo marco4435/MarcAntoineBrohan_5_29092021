@@ -1,17 +1,17 @@
 // EN -- Constants importation. 
 // FR -- Importation des constantes.
 // IT -- Importazione di costanti.
-import {url, idKanap, urlKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
+import {idKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
 
 
-// PAGE INDEX.
+// GENERAL FUNCTIONS / FONCTIONS GÉNÉRALES / FUNZIONI GENERALI.
 
 
 // EN -- 1 - API's data importation.           2 - Json format data conversion.           3 - Display of an alert in case of import failure.
 // FR -- 1 - Importation des données de l'API. 2 - Conversion des données au format Json. 3 - Affichage d'une alerte en cas d'échec de l'importation.
 // IT -- 1 - Importazione di dati API.         2 - Conversione dati in formato Json.      3 - Visualizza un avviso se l'importazione non riesce.
-export function getArticles(){
-    return fetch(url)
+export function getAPIdata(APIdata){
+    return fetch(APIdata)
     .then(function(response){
         return response.json();
     })
@@ -19,6 +19,10 @@ export function getArticles(){
         console.log("Le chargement de l'API n'a pas fonctionné.");
     });
 }
+
+
+// INDEX.
+
 
 // EN -- 1 - FOR loop displaying as many articles as there are in the API..  2 - Associated data insertion into the DOM.
 // FR -- 1 - Boucle FOR affichant autant d'articles qu'il y en a dans l'API. 2 - Insertion des données associées dans le DOM.
@@ -53,20 +57,8 @@ export function displayArticles(article){
 }
 
 
-// PAGE PRODUCT.
+// PRODUCT.
 
-
-// 1 - API loading and json format conversion. - Chargement de l'API et conversion au format json.
-// 2 - Display of an alert if the API loading didn't worked. - Affichage d'une alerte si le chargement de l'API n'a pas fonctionné.
-export function getKanapData(){
-    return fetch(urlKanap)
-        .then(function(response){
-            return response.json()
-        })
-        .catch(function() {
-            console.log("Le chargement de l'API n'a pas fonctionné.");
-        });
-}
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the API's ID via html tags insertion. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans l'ID de l'API via l'insertion d'éléments html.
 // 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
@@ -148,7 +140,7 @@ export function addToCart(kanapData){
     })
 }
 
-// PAGE CART.
+// CART.
 
 // 1 - Creation of a loop allowing to display as many articles as there are in the cart. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans le panier.
 // 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.

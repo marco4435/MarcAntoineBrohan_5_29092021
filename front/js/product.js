@@ -1,12 +1,15 @@
-// Functions importation. - Importation des fonctions.
-import {getKanapData, displayKanap, addToCart} from "./functions.js";
+// EN -- 1 - Functions importation. 2 - Constants importation.
+// FR -- 1 - Importation des fonctions. 2 - Importation des constantes.
+// IT -- 1 - Importazione di funzioni. 2 - Importazione di costanti.
+import {getAPIdata, displayKanap, addToCart} from "./functions.js";
+import {urlKanap} from "./const.js";
 
 main();
-// 1 - Article's data import from API. - Importation des données de l'article concerné depuis l'API.
-// 2 - Article's data display. - Affichage des données de l'article.
-// 3 - Selected items saved in the shopping cart. - Enregistrement dans le panier des articles sélectionnés.
+// EN -- 1 - . 2 - . 3 - .
+// FR -- 1 - . 2 - . 3 - .
+// IT -- 1 - . 2 - . 3 - .
 async function main(){
-    const kanapData = await getKanapData();
+    const kanapData = await getAPIdata(urlKanap);
     displayKanap(kanapData);
     addToCart(kanapData);
 }
