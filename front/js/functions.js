@@ -24,79 +24,79 @@ export function getAPIdata(APIdata){
 // INDEX.
 
 
-// EN -- 1 - FOR loop displaying as many articles as there are in the API..  2 - Associated data insertion into the DOM.
+// EN -- 1 - FOR loop displaying as many articles as there are in the API.  2 - Associated data insertion into the DOM.
 // FR -- 1 - Boucle FOR affichant autant d'articles qu'il y en a dans l'API. 2 - Insertion des données associées dans le DOM.
 // IT -- 1 - Ciclo FOR che monstra tanti articoli quanti nell'API.           2 - Inserimento dei dati associati nel DOM.
-export function displayArticles(article){
-    for(let i = 0; i < article.length; i++){
+export function displayKanaps(kanap){
+    for(let i = 0; i < kanap.length; i++){
         let productCard = document.querySelector(".items");
                 
         let productLink = document.createElement("a");
         productCard.appendChild(productLink);
-        productLink.href = "front/product.html?id="+article[i]._id;
-        productLink.title = article[i].description;
+        productLink.href = "front/product.html?id="+kanap[i]._id;
+        productLink.title = kanap[i].description;
             
         let productArticle = document.createElement("article");
         productLink.appendChild(productArticle);
             
         let productImg = document.createElement("img");
         productArticle.appendChild(productImg);
-        productImg.src = article[i].imageUrl;
-        productImg.alt = article[i].altTxt;
+        productImg.src = kanap[i].imageUrl;
+        productImg.alt = kanap[i].altTxt;
             
         let productH3 = document.createElement("h3");
         productArticle.appendChild(productH3);
         productH3.classList.add("productName");
-        productH3.innerHTML = article[i].name;
+        productH3.innerHTML = kanap[i].name;
             
         let productP = document.createElement("p");
         productArticle.appendChild(productP);
         productP.classList.add("productDescription");
-        productP.innerHTML = article[i].description;
+        productP.innerHTML = kanap[i].description;
     }
 }
 
 
 // PRODUCT.
 
-
-// 1 - Creation of a loop allowing to display as many articles as there are in the API's ID via html tags insertion. - Création d'une boucle permettant d'afficher autant d'articles qu'il y en a dans l'ID de l'API via l'insertion d'éléments html.
-// 2 - For each article, integration of its own datas. - Pour chaque article, intégration de ses propres données.
-export function displayKanap(kanapData){
+// EN -- Selected article data insertion in the DOM.
+// FR -- Insertion des données de l'article sélectionné dans le DOM.
+// IT -- Inserimento dei dati dell'articolo selezionato nel DOM.
+export function displayKanap(kanap){
     let ItemImg = document.querySelector(".item__img");
     let Img = document.createElement("img");
     ItemImg.appendChild(Img);
-    Img.src = kanapData.imageUrl;
-    Img.alt = kanapData.altTxt;
+    Img.src = kanap.imageUrl;
+    Img.alt = kanap.altTxt;
     
     let Title = document.querySelector("#title");
-    Title.innerHTML = kanapData.name;
+    Title.innerHTML = kanap.name;
 
     let Price = document.querySelector("#price");
-    Price.innerHTML = kanapData.price;
+    Price.innerHTML = kanap.price;
 
     let Description = document.querySelector("#description");
-    Description.innerHTML = kanapData.description;
+    Description.innerHTML = kanap.description;
 
     let Color = document.querySelector("#colors");
-    for (let i = 0; i < kanapData.colors.length; i++){
+    for (let i = 0; i < kanap.colors.length; i++){
         let Option = document.createElement("option");
-        Option.innerText = kanapData.colors[i];
-        Option.value = kanapData.colors[i];
+        Option.innerText = kanap.colors[i];
+        Option.value = kanap.colors[i];
         Color.appendChild(Option);
     }
 }
 
-// 1 - Creation of kanapsInStorage array witch will include products to add to cart. - Création du tableau kanapsInStorage qui inclura les produits à ajouter au panier.
-// 2 - For each click on "Add to cart" button : - À chaque clic sur le bouton "Ajouter au panier" :
-// 2.1 - Verification that selected quantity is between 1 and 100. - Vérification que la quantité sélectionnée soit comprise entre 1 et 100.
-// 2.2 - Localstorage integration into kanapsInStorage array. - Intégration du localstorage au tableau kanapsInStorage.
-// 2.3 - Recording in the kanapAdded variable of products to add to the basket of the being viewed page. - Enregistrement dans la variable kanapAdded des produits à ajouter au panier de la page en cours de consultation.
-// 2.4 - kanapAdded integration into kanapsInStorage. - Intégration de kanapAdded à kanapsInStorage. Si un produit est déjà présent, seule la quantité est incrémentée.
-// 2.5 - kanapsInStorage integration into localstorage. - Intégration de kanapsInStorage au localstorage.
-export function addToCart(kanapData){
+// EN -- 1 - By clicking on "Add to basket", temporary recording of the data entered. 2 - Copy of the localstorage locally if it is not empty.
+// EN -- 3 - Adding the item to the cart. If it is already in the basket, only the quantity is incremented. 4 - Update of localstorage.
+// FR -- 1 - Au clic sur "Ajouter au panier", enregistrement temporaire des données saisies. 2 - Copie du localstorage localement si celui-ci n'est pas vide.
+// FR -- 3 - Ajout de l'article au panier. S'il est déjà présent dans le panier, seule la quantité est incrémentée. 4 - Mise à jour du localstorage.
+// IT -- 1 - Cliccando su "Aggiungi al carrello", registrazione temporanea dei dati inseriti. 2 - Copia localstorage localmente se non è vuoto.
+// IT -- 3 - Aggiunta dell'articolo al carrello. Se è già nel carrello, viene incrementata solo la quantità. 4 - Aggiornamento del localstorage.
+export function addToCart(kanap){
     let addToCart = document.querySelector("#addToCart");  
     let kanapsInStorage = [];
+
     addToCart.addEventListener("click", (event) => {
         event.preventDefault();
         let color = document.querySelector("#colors");
@@ -106,35 +106,27 @@ export function addToCart(kanapData){
             id: idKanap,
             quantity: parseFloat(document.querySelector("#quantity").value).toString(),
             color: kanapColor,
-            image: kanapData.imageUrl,
-            name: kanapData.name,
-            price: kanapData.price.toString(),
+            image: kanap.imageUrl,
+            name: kanap.name,
+            price: kanap.price.toString(),
         }
         if(kanapsInLocalStorage !== null){
             kanapsInStorage = kanapsInLocalStorage;
         }
-        if(kanapAdded.quantity > 0 && kanapAdded.quantity < 101){
-            if(kanapsInStorage){
-                for(let i = 0; i < kanapsInStorage.length; i++) {
-                    if(kanapAdded.id === kanapsInStorage[i].id && kanapAdded.color === kanapsInStorage[i].color){
-                        let addedQuantity = parseInt(kanapsInStorage[i].quantity) + parseInt(kanapAdded.quantity);
-                        a = a + 1;
-                        kanapsInStorage[i].quantity = addedQuantity.toString();
-                        alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
-                    }
-                };
-                if (a === 0){
-                    kanapsInStorage.push(kanapAdded);
-                    alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
+        if(kanapsInStorage){
+            for(let i = 0; i < kanapsInStorage.length; i++) {
+                if(kanapAdded.id === kanapsInStorage[i].id && kanapAdded.color === kanapsInStorage[i].color){
+                    let addedQuantity = parseInt(kanapsInStorage[i].quantity) + parseInt(kanapAdded.quantity);
+                    a = a + 1;
+                    kanapsInStorage[i].quantity = addedQuantity.toString();
                 }
-            }
-            else{
+            };
+            if (a === 0){
                 kanapsInStorage.push(kanapAdded);
-                alert("Le(s) produit(s) ont bien été ajouté(s) au panier.");
             }
         }
         else{
-            alert("Veuillez saisir une valeur entre 1 et 100.");
+            kanapsInStorage.push(kanapAdded);
         }
         localStorage.setItem("kanapsToOrder", JSON.stringify(kanapsInStorage));
     })
