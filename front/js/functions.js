@@ -298,11 +298,6 @@ function validation(data){
     let name_cityRegex = /^[-'a-zA-ZÀ-ÖØ-öø-ÿ\s]{3,}$/;
     let adressRegex = /^[-'a-zA-Z0-9À-ÖØ-öø-ÿ\s]{3,}$/;
     let emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    let test = ["firstNameTest", "lastNameTest", ];
-    let value = [];
-    let regex = [];
-    let ErrorMsg = [];
-    let type = [];
 
     if(firstName.length > 1 && name_cityRegex.test(firstName)){
         firstNameTest = true;
