@@ -194,6 +194,8 @@ export function displayCarts(data){
     }
 }
 
+// EN -- Item quantity calculation in the cart.
+// FR -- Calcul de la quantité d'articles présente dans le panier.
 export function getTotalQuantity(data){
     let TotalQuantity = 0;
     for(let i = 0; i < data.length; i++){
@@ -202,6 +204,8 @@ export function getTotalQuantity(data){
     return TotalQuantity;
 }
 
+// EN -- Cart price calculation.
+// FR -- Calcul du prix du panier.
 export function getTotalPrice(data){
     let TotalPrice = 0;
     for(let i = 0; i < data.length; i++){
@@ -210,6 +214,8 @@ export function getTotalPrice(data){
     return TotalPrice;
 }
 
+// EN -- Display of the items quantity in the cart and the cart price.
+// FR -- Affichage de la quantité d‘articles présents dans le panier et du prix du panier.
 export function displayQuantityPrice(data1, data2){
     let TotalQuantity = document.querySelector("#totalQuantity");
     TotalQuantity.innerHTML = data1;
@@ -217,6 +223,8 @@ export function displayQuantityPrice(data1, data2){
     TotalPrice.innerHTML = data2;
 }
 
+// EN -- By clicking on the "Delete" button, the item is removed from the cart.
+// FR -- Au clic sur le boutton "Supprimer", retrait de l'article du panier.
 export function deleteKanap(){
     let deleteKanap = document.querySelectorAll(".deleteItem");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
@@ -235,6 +243,8 @@ export function deleteKanap(){
     }
 }
 
+// EN -- At each quantity change, modification of the cart quantity.
+// FR -- À chaque changement de quantité, modification de la quantité dans le panier.
 export function changeQuantity(){
     let changeQuantity = document.querySelectorAll(".itemQuantity");
     let newkanapsInLocalStorage = kanapsInLocalStorage;
@@ -259,8 +269,10 @@ export function changeQuantity(){
     }
 }
 
+// EN -- By Clicking on the "Order" button, check that the form has been correctly completed, retrieve an order ID from the API and transfer to the confirmation page.
+// FR -- Au clic sur le boutton "Commander", vérification du bon remplissage du formulaire, récupération d'un ID de commande auprès de l'API et transfert vers la page confirmation.
 export function sendOrder(){
-    let order = document.getElementById('order');
+    let order = document.getElementById("order");
     order.addEventListener('click', (event) => {
         let contact = {
             firstName: document.querySelector("#firstName").value,
@@ -271,7 +283,6 @@ export function sendOrder(){
         }
         let products = kanapsInLocalStorage.map(obj => obj.id);
         if(validation(contact)){
-            alert("if");
             fetch(urlOrder, {
                 method: "POST",
                 headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
@@ -279,12 +290,15 @@ export function sendOrder(){
             })
             .then((response) => response.json())
             .then((id) => {
+                localStorage.clear();
                 document.location.href = `confirmation.html?id=${id.orderId}`;
             })
         }
     })
 }
 
+// EN -- Check that the form has been correctly completed.
+// FR -- Vérification du bon remplissage du formulaire.
 function validation(data){
     let firstNameTest;
     let lastNameTest;
@@ -355,6 +369,8 @@ function validation(data){
 
 // CONFIRMATION
 
+// EN -- Order ID display.
+// FR -- Affichage de l'ID de la commande.
 export function displayOrderId(data){
     let orderId = document.getElementById("orderId");
     orderId.innerText = data;

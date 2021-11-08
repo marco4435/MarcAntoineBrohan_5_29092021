@@ -4,7 +4,8 @@ import {displayOrderId} from "./functions.js";
 import {idOrder} from "./const.js";
 
 main();
-
+// EN -- 1 - Order number display.
+// FR -- 1 - Affichage du numéro de commande.
 async function main(){
     displayOrderId(idOrder);
 }
