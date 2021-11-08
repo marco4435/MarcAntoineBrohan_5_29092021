@@ -3,7 +3,7 @@
 import {idKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
 
 
-// GENERAL FUNCTIONS / FONCTIONS GÉNÉRALES / FUNZIONI GENERALI.
+// GENERAL FUNCTIONS / FONCTIONS GÉNÉRALES.
 
 
 // EN -- 1 - API's data importation.           2 - Json format data conversion.           3 - Display of an alert in case of import failure.
@@ -125,7 +125,9 @@ export function addToCart(data){
     })
 }
 
+
 // CART
+
 
 // EN -- Cart data insertion in the DOM.
 // FR -- Insertion des données du pannier dans le DOM.
@@ -367,7 +369,9 @@ function validation(data){
     }
 }
 
+
 // CONFIRMATION
+
 
 // EN -- Order ID display.
 // FR -- Affichage de l'ID de la commande.
