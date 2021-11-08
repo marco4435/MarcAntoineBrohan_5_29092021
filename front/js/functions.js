@@ -3,7 +3,7 @@
 import {idKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
 
 
-// GENERAL FUNCTIONS / FONCTIONS GÉNÉRALES.
+// GENERAL FUNCTION / FONCTION GÉNÉRALE.
 
 
 // EN -- 1 - API's data importation.           2 - Json format data conversion.           3 - Display of an alert in case of import failure.
