@@ -270,8 +270,8 @@ export function sendOrder(){
             email: document.querySelector("#email").value,
         }
         let products = kanapsInLocalStorage.map(obj => obj.id);
-        let validationContact = validation(contact);
-        if(validationContact = 1){
+        if(validation(contact)){
+            alert("if");
             fetch(urlOrder, {
                 method: "POST",
                 headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
@@ -310,7 +310,7 @@ function validation(data){
         firstNameErrorMsg.style.color = "red";
     }
     if(lastName.length > 1 && name_cityRegex.test(lastName)){
-        firstNameTest = true;
+        lastNameTest = true;
     }
     else{
         lastNameTest = false;
@@ -345,8 +345,17 @@ function validation(data){
         emailErrorMsg.innerText = "Votre email doit contenir au moins 2 caractères et un @.";
         emailErrorMsg.style.color = "red";
     }
-    if(firstNameTest && lastNameTest && addressTest && cityTest && emailTest){
-        let validationContact = 1;
-        return validationContact;
+    if(firstNameTest === true && lastNameTest === true && addressTest === true && cityTest === true && emailTest === true){
+        return true;
     }
+    else{
+        return false;
+    }
+}
+
+// CONFIRMATION
+
+export function displayOrderId(data){
+    let orderId = document.getElementById("orderId");
+    orderId.innerText = data;
 }

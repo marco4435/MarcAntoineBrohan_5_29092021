@@ -8,7 +8,7 @@ main();
 // FR -- 1 - Importation des données de l'API et conversion au format Json. 2 - Insertion dans le DOM d'autant d'articles qu'il y en a dans l'API avec les données importées associées.
 async function main(){
     const kanapsData = await getAPIdata(url);
-    // console.log("Test 1");
-    // console.log(kanapsData);
+    console.log("Test 1");
+    console.log(kanapsData);
     displayKanaps(kanapsData);
 }
