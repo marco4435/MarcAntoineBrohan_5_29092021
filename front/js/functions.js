@@ -1,6 +1,6 @@
 // EN -- Constants importation. 
 // FR -- Importation des constantes.
-import {idKanap, kanapsInLocalStorage, urlOrder} from "./const.js";
+import {idPage, kanapsInLocalStorage, urlOrder} from "./const.js";
 
 
 // GENERAL FUNCTION / FONCTION GÉNÉRALE.
@@ -96,7 +96,7 @@ export function addToCart(data){
         let kanapColor = color.value;
         let a = 0;
         let kanapAdded = {              
-            id: idKanap,
+            id: idPage,
             quantity: parseFloat(document.querySelector("#quantity").value).toString(),
             color: kanapColor,
             image: data.imageUrl,
