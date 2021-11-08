@@ -270,7 +270,8 @@ export function sendOrder(){
             email: document.querySelector("#email").value,
         }
         let products = kanapsInLocalStorage.map(obj => obj.id);
-        if(validation(contact)){
+        let validationContact = validation(contact);
+        if(validationContact = 1){
             fetch(urlOrder, {
                 method: "POST",
                 headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
@@ -345,9 +346,7 @@ function validation(data){
         emailErrorMsg.style.color = "red";
     }
     if(firstNameTest && lastNameTest && addressTest && cityTest && emailTest){
-        return true;
-    }
-    else{
-        return false;
+        let validationContact = 1;
+        return validationContact;
     }
 }
