@@ -1,11 +1,17 @@
-// EN -- 1 - Functions importation. 2 - Constants importation.
-// FR -- 1 - Importation des fonctions. 2 - Importation des constantes.
-import {displayOrderId} from "./functions.js";
+// EN -- Constants importation.
+// FR -- Importation des constantes.
 import {idPage} from "./const.js";
 
 main();
-// EN -- 1 - Order number display.
-// FR -- 1 - Affichage du numéro de commande.
+// EN -- Order number display.
+// FR -- Affichage du numéro de commande.
 async function main(){
     displayOrderId(idPage);
+}
+
+// EN -- Order ID display.
+// FR -- Affichage de l'ID de la commande.
+export function displayOrderId(data){
+    let orderId = document.getElementById("orderId");
+    orderId.innerText = data;
 }
