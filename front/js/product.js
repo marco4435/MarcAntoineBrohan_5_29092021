@@ -1,6 +1,6 @@
 // EN -- 1 - Functions importation. 2 - Constants importation.
 // FR -- 1 - Importation des fonctions. 2 - Importation des constantes.
-import {getAPIdata} from "./functions.js";
+import {cartEmpty, getAPIdata} from "./functions.js";
 import {idPage, kanapsInLocalStorage, urlKanap} from "./const.js";
 
 main();
@@ -8,10 +8,9 @@ main();
 // FR -- 1 - Importation des données de l'API et conversion au format Json. 2 - Insertion des données de l'article sélectionné dans le DOM.
 async function main(){
     const kanapData = await getAPIdata(urlKanap);
-    // console.log("Test 1");
-    // console.log(kanapData);
     displayKanap(kanapData);
     addToCart(kanapData);
+    cartEmpty();
 }
 
 // EN -- Selected article data insertion in the DOM.
@@ -50,7 +49,6 @@ export function addToCart(data){
     let kanapsInStorage = [];
 
     addToCart.addEventListener("click", (event) => {
-        event.preventDefault();
         let color = document.querySelector("#colors");
         let kanapColor = color.value;
         let a = 0;

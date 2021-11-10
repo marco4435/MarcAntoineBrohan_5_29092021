@@ -1,6 +1,6 @@
 // EN -- 1 - Functions importation. 2 - Constants importation.
 // FR -- 1 - Importation des fonctions. 2 - Importation des constantes.
-import {getAPIdata} from "./functions.js";
+import {cartEmpty, getAPIdata} from "./functions.js";
 import {url} from "./const.js";
 
 main();
@@ -8,9 +8,8 @@ main();
 // FR -- 1 - Importation des données de l'API et conversion au format Json. 2 - Insertion dans le DOM d'autant d'articles qu'il y en a dans l'API avec les données importées associées.
 async function main(){
     const kanapsData = await getAPIdata(url);
-    // console.log("Test 1");
-    // console.log(kanapsData);
     displayKanaps(kanapsData);
+    cartEmpty();
 }
 
 // EN -- 1 - FOR loop displaying as many articles as there are in the API.  2 - Associated data insertion into the DOM.

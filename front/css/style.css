@@ -73,6 +73,9 @@ h2 {
 .informations__mail {
 	margin-right: 10px;
 }
+#cart{
+	cursor:pointer;
+}
 
 /*menu*/
 .menu {

@@ -123,7 +123,6 @@ export function deleteKanap(){
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for (let i = 0; i < deleteKanap.length; i++) {
         deleteKanap[i].addEventListener('click', (event) => {
-            event.preventDefault();
             newkanapsInLocalStorage.splice(i, 1);
             let articles = document.querySelectorAll(".cart__item");
             let child = articles[i];
@@ -143,7 +142,6 @@ export function changeQuantity(){
     let newkanapsInLocalStorage = kanapsInLocalStorage;
     for(let i = 0; i < changeQuantity.length; i++){
         changeQuantity[i].addEventListener('change', (event) => {
-            event.preventDefault();
             let NewQuantity = event.target.value;
             let newkanapAdded = {
                 id: newkanapsInLocalStorage[i].id,
